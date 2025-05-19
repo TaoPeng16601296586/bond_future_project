@@ -1,5 +1,4 @@
 
-```markdown
 # 🇨🇳 国债期货因子研究项目（Bond Futures Factor Research Project）
 
 本项目聚焦中国国债期货（TF、T、TS、TL）市场的数据抓取、清洗与技术指标计算。  
