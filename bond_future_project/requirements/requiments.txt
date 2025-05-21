@@ -1,0 +1,8 @@
+akshare>=1.9.0
+pandas>=1.5.0
+numpy>=1.21.0
+ta-lib>=0.4.0
+matplotlib>=3.5.0
+tqdm>=4.64.0
+
+请注意，ta-lib 是一个依赖于 C 库的 Python 包，安装前需确保系统已安装对应的 C 库
