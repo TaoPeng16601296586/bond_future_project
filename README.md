@@ -5,37 +5,6 @@
 数据来源于 [AkShare](https://github.com/jindaxiang/akshare)，因子来源包括 TA-Lib 以及中金公司研报中适用于国债期货的动量、波动率、价量因子。
 
 ---
-
-## 项目结构
-
-```
-
-bond\_future\_project/
-├── data/
-│   ├── raw data/                 # 原始数据（抓取或更新后存放）
-│   │   ├── TF\_2年期主连\_2018至2025\_国债期货.csv
-│   │   └── ...
-│   └── factors/
-│       ├── talib/               # TA-Lib 技术因子结果
-│       └── cicc\_vol/            # 中金风格因子结果
-│
-├── scripts/
-│   ├── fetch\_data.py            # 全量抓取
-│   ├── update\_data.py           # 增量更新
-│   ├── clean\_data.py            # 数据清洗
-│   └── compute\_factors/
-│       ├── apply\_talib\_factors.py     # 批量计算 TA-Lib 因子
-│       ├── apply\_cicc\_factors.py      # 批量计算中金波动率因子
-│       ├── ta\_lib\_factors.py
-│       ├── cicc\_factors.py
-│       └── factor\_engine.py
-│
-├── requirements/                # 环境依赖说明
-│   └── requirements.txt
-└── README.md
-
-````
-
 ---
 
 ## 环境安装
