@@ -11,88 +11,86 @@
 ```
 
 bond\_future\_project/
-├── data/                          # 存储原始或更新后的 CSV 数据
-│   ├── TF\_5Y\_Bond\_Futures.csv
-│   ├── T\_10Y\_Bond\_Futures.csv
-│   ├── TS\_2Y\_Bond\_Futures.csv
-│   └── TL\_30Y\_Bond\_Futures.csv
+├── data/
+│   ├── raw data/                 # 原始数据（抓取或更新后存放）
+│   │   ├── TF\_2年期主连\_2018至2025\_国债期货.csv
+│   │   └── ...
+│   └── factors/
+│       ├── talib/               # TA-Lib 技术因子结果
+│       └── cicc\_vol/            # 中金风格因子结果
 │
-├── scripts/                       # 项目核心逻辑脚本
-│   ├── fetch\_data.py             # 全量抓取历史数据（首次使用）
-│   ├── update\_data.py            # 每日增量更新
-│   ├── clean\_data.py             # 批量清洗所有 CSV 数据
-│   └── compute\_factors/          # 因子计算模块（按来源分类）
-│       ├── **init**.py
-│       ├── ta\_lib\_factors.py     # 使用 TA-Lib 计算技术指标
-│       └── cicc\_factors.py       # 基于中金研报的特定因子
+├── scripts/
+│   ├── fetch\_data.py            # 全量抓取
+│   ├── update\_data.py           # 增量更新
+│   ├── clean\_data.py            # 数据清洗
+│   └── compute\_factors/
+│       ├── apply\_talib\_factors.py     # 批量计算 TA-Lib 因子
+│       ├── apply\_cicc\_factors.py      # 批量计算中金波动率因子
+│       ├── ta\_lib\_factors.py
+│       ├── cicc\_factors.py
+│       └── factor\_engine.py
 │
-├── requirements.txt              # 项目依赖包列表
-└── README.md                     # 当前说明文档
+├── requirements/                # 环境依赖说明
+│   └── requirements.txt
+└── README.md
 
 ````
 
 ---
 
-## 环境安装（建议使用虚拟环境）
+## 环境安装
 
 ```bash
-# 克隆仓库
+# 克隆项目
 git clone https://github.com/your_username/bond_future_project.git
 cd bond_future_project
 
-# 创建虚拟环境（可选）
+# 可选：创建虚拟环境
 python -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
+venv\Scripts\activate  # Windows
 
-# 安装依赖包
-pip install -r requirements.txt
+# 安装依赖
+pip install -r requirements/requirements.txt
 ````
-
 ---
 
 ## 快速使用指南
 
-### 第一次抓取全量数据
+### 1️⃣ 抓取数据
 
 ```bash
-python scripts/fetch_data.py
+python scripts/fetch_data.py        # 初次抓取
+python scripts/update_data.py       # 增量更新
 ```
 
-### 每日增量更新
-
-```bash
-python scripts/update_data.py
-```
-
-### 批量清洗数据（去重、缺失、负数处理）
+### 2️⃣ 数据清洗（建议每次更新后执行）
 
 ```bash
 python scripts/clean_data.py
 ```
 
-### 技术指标计算（动量、波动率等）
+### 3️⃣ 计算技术因子
 
-#### 使用 TA-Lib 计算技术指标：
-
-```bash
-python scripts/compute_factors/ta_lib_factors.py
-```
-
-#### 使用中金研报方法计算特色因子：
+#### TA-Lib 动量、波动率类指标
 
 ```bash
-python scripts/compute_factors/cicc_factors.py
+python scripts/compute_factors/apply_talib_factors.py
 ```
 
-> 也可以将因子封装为函数批量计算并输出 CSV。
+#### 中金波动率、振幅、影线类指标
+
+```bash
+python scripts/compute_factors/apply_cicc_factors.py
+```
 
 ---
 
 ## 注意事项
 
-* 数据默认保存在 `data/` 目录下。
-* 建议先运行 `clean_data.py` 再进行因子计算。
-* 使用 `ta-lib` 前请先安装对应的 C 库，参考：[TA-Lib 安装文档](https://mrjbq7.github.io/ta-lib/install.html)
+* 所有 `.csv` 原始数据应存放在 `data/raw data/` 下；
+* 因子计算结果输出到 `data/factors/` 子目录中；
+* `TA-Lib` 使用前请提前安装 C 库（详见：[TA-Lib 安装指南](https://mrjbq7.github.io/ta-lib/install.html)）；
+* 推荐先执行数据清洗再运行因子计算。
 
-
+---
 
