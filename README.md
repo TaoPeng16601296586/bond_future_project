@@ -56,20 +56,20 @@ pip install -r requirements/requirements.txt
 
 ## 快速使用指南
 
-### 1️⃣ 抓取数据
+### 1️ 抓取数据
 
 ```bash
 python scripts/fetch_data.py        # 初次抓取
 python scripts/update_data.py       # 增量更新
 ```
 
-### 2️⃣ 数据清洗（建议每次更新后执行）
+### 2️ 数据清洗（建议每次更新后执行）
 
 ```bash
 python scripts/clean_data.py
 ```
 
-### 3️⃣ 计算技术因子
+### 3️ 计算技术因子
 
 #### TA-Lib 动量、波动率类指标
 
