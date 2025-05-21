@@ -1,5 +1,5 @@
 
-# 🇨🇳 国债期货因子研究项目（Bond Futures Factor Research Project）
+# 中国国债期货因子研究项目（Bond Futures Factor Research Project）
 
 本项目聚焦中国国债期货（TF、T、TS、TL）市场的数据抓取、清洗与技术指标计算。  
 数据来源于 [AkShare](https://github.com/jindaxiang/akshare)，因子来源包括 TA-Lib 以及中金公司研报中适用于国债期货的动量、波动率、价量因子。
