@@ -11,40 +11,6 @@
 
 ---
 
-## 项目目录结构
-
-```
-bond_future_project/
-├── data/
-│   ├── raw data/                    # 原始行情数据
-│   ├── factors/                     # 各类技术因子输出
-│   ├── cleaned/                    # 清洗后数据（可选）
-│   └── model_input/                # 模型所需输入特征表
-│
-├── scripts/
-│   ├── fetch_data.py               # 初次抓取数据
-│   ├── update_data.py              # 增量更新
-│   ├── clean_data.py               # 清洗脚本
-│   ├── prepare_model_data.py       # 🆕 构造模型用数据
-│   └── compute_factors/
-│       ├── apply_talib_factors.py
-│       ├── apply_cicc_factors.py
-│       └── apply_all_factors.py
-│
-├── models/
-│   ├── run_xgboost.py              # 模型训练与预测
-│   ├── run_lightgbm.py
-│   ├── run_catboost.py
-│   ├── run_dynamic_ensemble.py     # 🆕 动态集成训练入口
-│   └── evaluate_ks_test.py         # 🆕 KS检验与模型对比
-│
-├── requirements/
-│   └── requirements.txt
-│
-├── notebooks/                      # 可视化与探索性分析
-└── README.md
-```
-
 ---
 
 ## 未来模型模块配置
