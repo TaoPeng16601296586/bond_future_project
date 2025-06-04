@@ -29,34 +29,34 @@ class CICCVolatilityFactors:
 
     # 过去1个月（调整日收益率）的标准差，其中，调整日收益率指涨跌幅小于0的日收益率，以下类似
     def add_vol_up_std_1M(self):
-        down_ret = self.df['daily_return'].where(self.df['daily_return'] < 0)
-        self.df['vol_down_std_1M'] = down_ret.rolling(window=21).std()
-        return self.df
-
-    def add_vol_up_std_3M(self):
-        down_ret = self.df['daily_return'].where(self.df['daily_return'] < 0)
-        self.df['vol_down_std_1M'] = down_ret.rolling(window=63).std()
-        return self.df
-
-    def add_vol_up_std_6M(self):
-        down_ret = self.df['daily_return'].where(self.df['daily_return'] < 0)
-        self.df['vol_down_std_1M'] = down_ret.rolling(window=126).std()
-        return self.df
-
-    # 过去1个月（调整日收益率）的标准差，其中，调整日收益率指涨跌幅大于0的日收益率，以下类似
-    def add_vol_down_std_1M(self):
         up_ret = self.df['daily_return'].where(self.df['daily_return'] > 0)
         self.df['vol_up_std_1M'] = up_ret.rolling(window=21).std()
         return self.df
 
-    def add_vol_down_std_3M(self):
+    def add_vol_up_std_3M(self):
         up_ret = self.df['daily_return'].where(self.df['daily_return'] > 0)
         self.df['vol_up_std_3M'] = up_ret.rolling(window=63).std()
         return self.df
 
-    def add_vol_down_std_6M(self):
+    def add_vol_up_std_6M(self):
         up_ret = self.df['daily_return'].where(self.df['daily_return'] > 0)
         self.df['vol_up_std_6M'] = up_ret.rolling(window=126).std()
+        return self.df
+
+    # 过去1个月（调整日收益率）的标准差，其中，调整日收益率指涨跌幅大于0的日收益率，以下类似
+    def add_vol_down_std_1M(self):
+        down_ret = self.df['daily_return'].where(self.df['daily_return'] < 0)
+        self.df['vol_down_std_1M'] = down_ret.rolling(window=21).std()
+        return self.df
+
+    def add_vol_down_std_3M(self):
+        down_ret = self.df['daily_return'].where(self.df['daily_return'] < 0)
+        self.df['vol_down_std_3M'] = down_ret.rolling(window=63).std()
+        return self.df
+
+    def add_vol_down_std_6M(self):
+        down_ret = self.df['daily_return'].where(self.df['daily_return'] < 0)
+        self.df['vol_down_std_6M'] = down_ret.rolling(window=126).std()
         return self.df
 
     #  日内振幅均值因子,过去1个月（最高价/最低价）的均值,以下类似
