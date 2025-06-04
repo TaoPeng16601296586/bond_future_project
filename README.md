@@ -76,6 +76,14 @@ python models/run_dynamic_ensemble.py
 python models/evaluate_ks_test.py
 ```
 
+### 7️ 基于 XGBoost 的方向预测回测
+
+```bash
+python models/run_xgboost.py --input data/factors/merged/全品种_合并因子汇总.csv
+```
+
+运行结果将给出测试集准确率、策略胜率及累计收益等回测指标。
+
 ---
 
 
